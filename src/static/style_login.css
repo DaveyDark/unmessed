@@ -1,0 +1,11 @@
+
+:root {
+    --primary: #AAAAAA;
+    --secondary: #FFFFFF;
+    --background: #000000;
+}
+
+html {
+    background: var(--background);
+}
+
