@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, url_for
+from flask import Flask, redirect, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
 #setup flask
@@ -34,6 +34,23 @@ class Manager(db.Model):
 @app.route('/login/',methods=["GET","POST"])
 def login():
     #login page
+    if request.method == "POST":
+        form = request.form["form_id"]
+        if form == 'customer':
+            name = request.form["customer_name"]
+            organisation_id = request.form["hotel_id"]
+            room_number = request.form["room_number"]
+            customer_id = organisation_id + room_number
+            cstmr = Customer(customer_id,organisation_id,room_number,name)
+            db.session.add(cstmr)
+            db.session.commit()
+        elif form == "manager":
+            organisation_id = request.form["hotel_id"]
+            password = request.form["password"]
+            mngr = Manager(organisation_id,password)
+            db.session.add(mngr)
+            db.session.commit()
+        return render_template("login.html")
     return render_template('login.html')
 
 @app.route('/')
