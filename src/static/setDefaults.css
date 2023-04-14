@@ -9,3 +9,15 @@
 html{
     background-color: white;
 }
+:root{
+    --primaryColor : #e69a8a;
+    --primaryFade : #fdccc3a1;
+    --black : #242424;
+    --downShadow : 0px 5px 100px rgba(119, 119, 119, 0.355);
+
+}
+button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
